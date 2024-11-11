@@ -13,9 +13,12 @@ int windowY = 500;
 
 // state variable
 int type = RECTANGLE;
-float rState = 1.0;
-float gState = 1.0;
-float bState = 1.0;
+
+
+// color state variables
+float rState = 1.0;// initial color state
+float gState = 1.0;// initial color state
+float bState = 1.0;// initial color state
 float deltaColor = 0.1; // increment for color change
 
 

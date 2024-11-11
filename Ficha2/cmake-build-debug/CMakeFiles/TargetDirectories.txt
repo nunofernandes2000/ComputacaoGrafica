@@ -1,3 +1,3 @@
-/Users/nunofernandes/Desktop/EngenhariaInformatica2425/Ficha2/cmake-build-debug/CMakeFiles/Ficha2.dir
-/Users/nunofernandes/Desktop/EngenhariaInformatica2425/Ficha2/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/nunofernandes/Desktop/EngenhariaInformatica2425/Ficha2/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/nunofernandes/Desktop/ComputacaoGrafica/Ficha2/cmake-build-debug/CMakeFiles/Ficha2.dir
+/Users/nunofernandes/Desktop/ComputacaoGrafica/Ficha2/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/nunofernandes/Desktop/ComputacaoGrafica/Ficha2/cmake-build-debug/CMakeFiles/rebuild_cache.dir
