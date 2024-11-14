@@ -22,11 +22,13 @@ float bState = 1.0;// initial color state
 float deltaColor = 0.1; // increment for color change
 
 
-Form tempForm = NULL; // temporary form to be drawn while creating a form
+//Form tempForm = NULL; // temporary form to be drawn while creating a form
 
 
 
 int creatingForm = 0; // flag to indicate that we are creating a form --> 0 = false, 1 = true
+
+Form selectedForm = NULL; // selected form to be moved
 
 //FeedBack
 Form activeColor;
@@ -35,6 +37,12 @@ Form activeColor;
 // Save click past position --> ultima posicao do click
 int xLastClick = 0;
 int yLastClick = 0;
+
+
+
+//Color Palette
+Form *palette;
+int nPaletteColors;
 
 
 // insert a random form in the database
@@ -63,38 +71,110 @@ void deleteSomeForm(int x, int y) {
 }
 
 
-void mymouse(GLint button, GLint state, GLint x, GLint y) {
-    y = windowY - y;
 
-    if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN) {
-        if (type == RECTANGLE) {
-            if (creatingForm) {
-                Form f = newRectangle2Point(xLastClick, yLastClick, x, y);
-                setBackgroundColor(f, rState, gState, bState);
-                if (!insertBDForm(f)) {
-                    printf("MEMORY FULL!!!\n");
-                    deleteForm(f);
-                } else {
-                    glutPostRedisplay();
-                }
-                creatingForm = 0;
-                tempForm = NULL;
-            } else {
-                xLastClick = x;
-                yLastClick = y;
-                creatingForm = 1;
+// check if the mouse click is in the color palette
+void mymouseTools(GLint button, GLint state, GLint x, GLint y) {
+    int i;
+    float color[3];
+
+    if(button == GLUT_LEFT_BUTTON && state == GLUT_DOWN) {
+        for (i = 0; i < nPaletteColors; i++) {
+            if (pick(x, y, palette[i])) {
+                getBGColor(palette[i], color);
+                rState = color[0];
+                gState = color[1];
+                bState = color[2];
+                setBackgroundColor(activeColor, rState, gState, bState);
+                glutPostRedisplay();
+                break;
             }
-        } else {
-            insertRandomForm(x, y);
+
         }
+
     }
-    if (button == GLUT_RIGHT_BUTTON && state == GLUT_DOWN) {
-        deleteSomeForm(x, y);
-    }
+
 }
 
 
-// Add the motion callback function ---> pergunta 7 da ficha 4
+// check if the mouse click is in the canvas
+void mymouseCanvas(GLint button, GLint state, GLint x, GLint y) {
+
+    if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN) {
+        printf("-> LEFT button pressed!\n");
+/* Old vertion - create form on the second click
+		if (type == RECTANGLE) {
+			// ---> Example for creating fors with 2 clicks <---
+			if (creatingForm) {
+				Form f = newRectangle2Point(xLastClick, yLastClick, x, y);
+				setBackgroundColor(f, rState, gState, bState);
+				if (!insertDBForm(f)) {
+					printf("MEMORY FULL!!!\n");
+					deleteForm(f);
+				}
+				else
+					glutPostRedisplay();
+				creatingForm = 0;
+			}
+			else {
+				xLastClick = x;
+				yLastClick = y;
+				creatingForm = 1;
+			}
+		}
+		*/
+
+        if (type == RECTANGLE) {
+            if (creatingForm) {  // second click
+                change2Point(selectedForm, x, y);
+                creatingForm = 0;
+                selectedForm = NULL;
+                glutPostRedisplay();
+            }
+            else {  // first click
+                selectedForm = newRectangle2Point(x, y, x, y);
+                setBackgroundColor(selectedForm, rState, gState, bState);
+                if (!insertBDForm(selectedForm)) {
+                    printf("MEMORY FULL!!!\n");
+                    deleteForm(selectedForm);
+                    selectedForm = NULL;
+                }
+                else {
+                    creatingForm = 1;
+                    glutPostRedisplay();
+                }
+            }
+        }
+        else
+
+            insertRandomForm(x, y);
+    }
+    if (button == GLUT_RIGHT_BUTTON && state == GLUT_DOWN) {
+        printf("-> RIGHT button pressed!\n");
+        deleteSomeForm(x, y);
+    }
+
+
+}
+
+
+
+
+void mymouse(GLint button, GLint state, GLint x, GLint y) {
+    y = windowY - y;
+
+
+
+    if(y < 40) {
+        mymouseTools(button, state, x, y);
+    } else {
+        mymouseCanvas(button, state, x, y);
+    }
+
+
+}
+
+
+/*// Add the motion callback function ---> pergunta 7 da ficha 4
 void mymotion(int x, int y) {
     y = windowY - y;
 
@@ -106,7 +186,7 @@ void mymotion(int x, int y) {
         setBackgroundColor(tempForm, 1.0, 0.0, 0.0); // Set color to red
         glutPostRedisplay();
     }
-}
+}*/
 
 
 // Callback function called when a key is pressed
@@ -179,6 +259,25 @@ void mykeyboard(unsigned char key, int x, int y)
 }
 
 
+void mouseMotion(int x, int y) {
+    y = windowY - y;
+
+    printf("Moving pressing some button... (%i, %i)\n", x, y);
+
+}
+
+void mousePassiveMotion(int x, int y) {
+    y = windowY - y;
+
+    printf("Moving without pressing any button... (%i, %i)\n", x, y);
+
+    if (creatingForm) {
+        change2Point(selectedForm, x, y);
+        glutPostRedisplay();
+    }
+}
+
+
 
 
 
@@ -195,11 +294,17 @@ void mydisplay() {
 
     drawDBForms();
 
-    if (tempForm != NULL) {
+    /*if (tempForm != NULL) {
         drawForm(tempForm);
-    }
+    }*/
 
     drawForm(activeColor);
+
+    // draw color palette
+    for (int i = 0; i < nPaletteColors; ++i)
+    {
+        drawForm(palette[i]);
+    }
 
     glFlush();
 
@@ -221,6 +326,23 @@ void init() {
 
     activeColor = newSquare(10, 10, 20);
     setBackgroundColor(activeColor, rState, gState, bState);
+
+
+    //create array of palette colors
+    nPaletteColors = 5;
+    palette = malloc(sizeof (Form) * nPaletteColors);
+    palette[0] = newSquare(40,10,20);
+    setBackgroundColor(palette[0], 1.0, 0.0, 0.0); // red
+    palette[1] = newSquare(70,10,20);
+    setBackgroundColor(palette[1], 0.0, 1.0, 0.0); // green
+    palette[2] = newSquare(100,10,20);
+    setBackgroundColor(palette[2], 0.0, 0.0, 1.0); // blue
+    palette[3] = newSquare(130,10,20);
+    setBackgroundColor(palette[3], 1.0, 1.0, 0.0); // yellow
+    palette[4] = newSquare(160,10,20);
+    setBackgroundColor(palette[4], 1.0, 0.0, 1.0); // magenta
+
+
 
 
     glClearColor(0.0, 0.0, 0.0, 1.0);
@@ -258,7 +380,9 @@ void main(int argc, char** argv) {
     glutMouseFunc(mymouse); /* mouse callback function */
     glutKeyboardFunc(mykeyboard); /* keyboard callback function */
     glutReshapeFunc(myreshape); /* callback function for window resizing */
-    glutMotionFunc(mymotion); // Register the motion callback
+    //glutMotionFunc(mymotion); // Register the motion callback
+    glutMotionFunc(mouseMotion); // Register the motion callback
+    glutPassiveMotionFunc(mousePassiveMotion); // Register the passive motion callback
 
     init();
     glutMainLoop();

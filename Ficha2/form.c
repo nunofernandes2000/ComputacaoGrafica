@@ -190,11 +190,25 @@ void updateForm(Form f, float dx, float dy) {
 }
 
 
+void change2Point(Form f, float x, float y) {
+    f->xSize = x - f->x;
+    f->ySize = y - f->y;
+}
+
+
 void setBackgroundColor(Form f, float r, float g, float b)
 {
     f->r = r;
     f->g = g;
     f->b = b;
+}
+
+
+// get the background color of the form
+void getBGColor(Form f, float *c) {
+    c[0] = f->r;
+    c[1] = f->g;
+    c[2] = f->b;
 }
 
 
@@ -237,7 +251,8 @@ void drawBox(Form f) {
     glVertex2f(f->x + f->xSize, f->y);
     glEnd();
 
-    glColor3f(rand() / (RAND_MAX * 1.0), rand() / (RAND_MAX * 1.0), rand() / (RAND_MAX * 1.0));
+    //glColor3f(rand() / (RAND_MAX * 1.0), rand() / (RAND_MAX * 1.0), rand() / (RAND_MAX * 1.0));
+    glColor3f(1.0, 1.0, 1.0); // white
     glBegin(GL_LINE_LOOP);
     glVertex2f(f->x, f->y);
     glVertex2f(f->x, f->y + f->ySize);

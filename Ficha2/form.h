@@ -50,6 +50,8 @@ Form newRectangle2Point(float xi, float yi, float xf, float yf);
 
 
 
+
+
 //check if XY is inside the form
 int pick(float x, float y, Form f);
 
@@ -59,6 +61,7 @@ void deleteForm(Form f);
 
 // update a form position - moving by (dx,dy)
 void updateForm(Form f, float dx, float dy);
+void change2Point(Form f, float x, float y);
 
 
 void setBackgroundColor(Form f, float r, float g, float b);
@@ -74,6 +77,13 @@ void drawForm(Form f);
 // draw a graphical form
 Form createRandomForm(int maxSize);
 Form createFormCLICK(int type,int x, int y, int maxSize);
+
+
+
+
+// get the background color of the form
+void getBGColor(Form f, float *c);
+
 
 
 
