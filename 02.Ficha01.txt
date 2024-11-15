@@ -1,0 +1,15 @@
+1. Completar e testar a implementação da estrutura figura.
+2. Ligar/juntar a estrutura figura com o programa simple.c, fazendo com que sejam desenhadas figuras (Bounding Boxes/retângulos) que tenham sido criados antes da parte gráfica iniciar.
+3. Colocar um contador no programa para contar o número de vezes que a janela é desenhada; sempre que a janela é desenhada mostre na consola o valor do contador.
+4. Sempre que for desenhada a figura utilizar uma cor aleatória.
+5. Colocar nas figuras um limite (contorno) com cor aleatória.
+6. Coloque o programa a gerar figuras aleatórias (isto deve ser feita antes da parte gráfica iniciar, e.g., no init)
+
+---------------
+
+1. Complete and test the implementation of the Graphical Form structure.
+2. Connect/join the form structure with the simple.c program, causing forms (Bounding Boxes/rectangles) to be drawn that were created before the graphic part started.
+3. Place a counter in the program to count the number of times the window is drawn; whenever the window is drawn, show the counter value in the console.
+4. Whenever the form is drawn, use a random color.
+5. Place a border (outline) in a random color on the form.
+6. Set the program to generate random forms (this must be done before the graphics part starts, e.g., at init)

@@ -1,0 +1,31 @@
+Baseado-se no código da Ficha03 implemente as seguintes funcionalidades por ordem:
+
+1. Implemente uma funcionalidade que utilize o teclado para permitir escolher qual a forma que se pretende criar.
+  1.1. O botão esquerdo do rato cria a forma escolhida centrada na posição XY do rato (a forma pode ter dimensões e cores aleatórias).
+2. Implemente uma funcionalidade que quando clica com o botão direito faz um print para a consola, se existir alguma figura nessa posição.
+3. Para o ponto anterior, além o print, apague a figura da memória.
+4. Implemente uma funcionalidade que permita escolher cores para a figura.
+   Por exemplo, quando uma figura for criada fica com a cor que estiver ativa no momento. Tem que implementar uma forma do utilizador definir a cor ativa.
+5. Faça as alterações necessárias para quando alterar o tamanho da janela não alterar o conteúdo.
+
+Avançado:
+6. Altere a forma como a figura é criado. Em vez de 1 clique deve utilizar 2 cliques, por exemplo, para definir a bounding box da figura.
+7. O programa deve dar feedback entre o 1º e o 2º clique, i.e., a forma deve ser mostrada enquanto move o rato entre os cliques.
+
+
+-------------- 1,1.1,2,3,4(FEITO NO CÓDIGO) --> FALTA FAZER O 5 6 7, SENDO QUE O 5 JÁ ESTÁ FEITO PELO PROFESSOR ( É SÓ COPIAR!)
+
+
+Based on the Ficha03 code, implement the following features in order:
+
+1. Implement a feature that uses the keyboard to let you choose which form you want to create.
+   The left mouse button creates the chosen form centered on the mouse's XY position (the form can have random dimensions and colors).
+2. Implement a feature that when you click with the right button makes a print to the console, if there is a form in that position.
+3. For the previous point, in addition to the print, delete the form from memory.
+4. Implement a feature that allows you to choose colors for the form.
+   For example, when a form is created it takes on the color that is currently active. You have to implement a way for the user to set the active color.
+5. Make the necessary changes so that when you change the window size, the content does not change.
+
+Advanced:
+6. Change the way the form is created. Instead of 1 click, you should use 2 clicks, for example, to define the bounding box of the form
+7. the program must give feedback between the 1st and 2nd click, i.e., the form must be shown while moving the mouse between clicks.

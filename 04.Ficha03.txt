@@ -1,0 +1,36 @@
+Baseando-se no código da ficha 03, implemente as seguintes funcionalidades, por ordem.
+
+0. Altere o código para não criar/apagar figuras na callback do display e iniciar o programa sem figuras.
+
+1. Detete um qualquer clique do rato e imprima para a consola o botão que foi clicado e do estado.
+
+4. Utilize o botão esquerdo do rato para criar uma figura aleatório e o direito para apagar aleatoriamente uma figura.
+
+5. Detete a posição XY onde ocorreu o clique do rato, imprimindo essa informação na consola. (ATENÇÃO ao valor de Y!!!)
+
+6. Altere o comportamento do botão esquerdo do rato para agora criar uma figura aleatória mas na posição XY do rato.
+
+
+------------------------------------------(Pergunta (0) já foi feita)---------------------------------------------------------
+
+------------------------------------------(Pergunta (1) já foi feita)---------------------------------------------------------
+
+------------------------------------------(Pergunta (4) já foi feita)---------------------------------------------------------
+
+------------------------------------------(Pergunta (5) já foi feita)---------------------------------------------------------
+
+------------------------------------------(Pergunta (6) já foi feita)---------------------------------------------------------
+
+
+
+Based on the code in ficha 03, implement the following functionalities, in order.
+
+0. Change the code to not create/delete forms in the display callback and start the program without forms.
+
+1. Detect any mouse click and print to the console the button that was clicked and the status.
+
+4. Use the left mouse button to create a random form and the right mouse button to randomly delete a form.
+
+5. Detect the XY position where the mouse click occurred by printing this information to the console. (ATTENTION to the value of Y!!!)
+
+6. Change the behavior of the left mouse button to now create a random form but in the XY position of the mouse.

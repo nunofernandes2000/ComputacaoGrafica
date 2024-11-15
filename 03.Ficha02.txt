@@ -1,0 +1,42 @@
+Considerando a implementação feita na Ficha01, onde existem várias figuras aletória que são desenhadas, implemente as seguintes funcionalidades:
+1. Altere o programa para permitir que as coordenadas do mundo sejam iguais às coordenadas do ecrã.
+2. Cada figura (Bounding Boxes/retângulos) tem a sua cor de preenchimento e de limite, que é gerada aleatoriamente quando a figura é criada e não muda.
+3. Cada figura tem um tipo que define o forma dessa figura. Implemente pelo menos os seguintes tipos, gerando figuras aleatórias destes tipos:
+	. Retângulo;
+	. Quadrado;
+	. Triângulo isósceles;
+	. Linha.
+4. Implemente uma funcionalidade que sempre que sempre que o contador (da callback do display) for par uma das figuras é apagada da memória (de forma aleatória); quando não existirem mais figuras volta a criar figuras aleatórias.
+5. Implemente ainda os seguintes tipos de figuras:
+	. Triângulo equilátero;
+	. Hexágono;
+	. Circunferência.
+6. Investigue uma forma usar o rato para criar uma figura aleatória; assim quando detectar o click do rato cria uma figura aleatória.
+
+  --------------(FALTA RESOLVER O (4-Fica por fazer) (5) (6 +-))-------------------
+
+
+ --------------(FALTA RESOLVER  (4-Fica por fazer) (5 -- FEITO) (6 +-))-------------------
+
+
+-----------------------------
+
+
+Considering the implementation made in Ficha01, where several random graphical forms are drawn, implement the following functionalities:
+1. Change the program to allow the world coordinates to be the same as the screen coordinates.
+2. Each form (Bounding Boxes/rectangles) has a fill and limit color, which is randomly generated when the form is created and does not change.
+3. Each form has a type that defines its shape. Implement at least the following types, generating random forms of these types:
+  . Rectangle;
+  . Square;
+  . Isosceles triangle;
+  . Line.
+4. Implement a functionality that whenever the counter (from the display callback) is even, one of the forms is deleted from memory (randomly); When there are no more forms create random forms again.
+5. Also implement the following types of forms:
+  . Equilateral triangle;
+  . Hexagon;
+  . Circumference.
+6. Investigate a way to use the mouse to create a random form; when the mouse click is detected it creates a random form.
+
+(At the end of the class, submit your implementation to the PAE)
+
+
