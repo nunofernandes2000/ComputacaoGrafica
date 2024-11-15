@@ -11,6 +11,8 @@ int counter = 0;
 int windowX = 500;
 int windowY = 500;
 
+int drawArea = 60;
+
 // state variable
 int type = RECTANGLE;
 
@@ -34,7 +36,7 @@ Form selectedForm = NULL; // selected form to be moved
 Form activeColor;
 
 
-// Save click past position --> ultima posicao do click
+// Save click past position --> ultima posição do click
 int xLastClick = 0;
 int yLastClick = 0;
 
@@ -77,7 +79,7 @@ void mymouseTools(GLint button, GLint state, GLint x, GLint y) {
     int i;
     float color[3];
 
-    if(button == GLUT_LEFT_BUTTON && state == GLUT_DOWN) {
+    if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN) {
         for (i = 0; i < nPaletteColors; i++) {
             if (pick(x, y, palette[i])) {
                 getBGColor(palette[i], color);
@@ -88,11 +90,8 @@ void mymouseTools(GLint button, GLint state, GLint x, GLint y) {
                 glutPostRedisplay();
                 break;
             }
-
         }
-
     }
-
 }
 
 
@@ -162,15 +161,11 @@ void mymouseCanvas(GLint button, GLint state, GLint x, GLint y) {
 void mymouse(GLint button, GLint state, GLint x, GLint y) {
     y = windowY - y;
 
-
-
-    if(y < 40) {
+    if (y > windowY - drawArea) { // Adjusted to check the top 40 pixels
         mymouseTools(button, state, x, y);
     } else {
         mymouseCanvas(button, state, x, y);
     }
-
-
 }
 
 
@@ -266,6 +261,8 @@ void mouseMotion(int x, int y) {
 
 }
 
+//TODO:temos de ter um if para verificar o estado!
+//TODO:Fazer maquina de estados onde vai estar por exemplo, o estado mover,inserir,apagar
 void mousePassiveMotion(int x, int y) {
     y = windowY - y;
 
@@ -292,17 +289,19 @@ void mydisplay() {
     glVertex2f(0.0, 4.0);
     glEnd();
 
-    drawDBForms();
+    // Draw a line to separate the drawing area from the tools area
+    glColor3f(1.0, 1.0, 1.0); // white color
+    glBegin(GL_LINES);
+    glVertex2f(0.0, windowY - drawArea); // Adjusted to the top 40 pixels
+    glVertex2f(windowX, windowY - drawArea);
+    glEnd();
 
-    /*if (tempForm != NULL) {
-        drawForm(tempForm);
-    }*/
+    drawDBForms();
 
     drawForm(activeColor);
 
     // draw color palette
-    for (int i = 0; i < nPaletteColors; ++i)
-    {
+    for (int i = 0; i < nPaletteColors; ++i) {
         drawForm(palette[i]);
     }
 
@@ -320,30 +319,36 @@ void init() {
     srand(time(NULL));
 
     initDBForms(50);
-    //populateDBForms(windowX);
 
     printDBForms();
 
-    activeColor = newSquare(10, 10, 20);
+    // Adjust the y position of activeColor to be a bit lower
+    activeColor = newSquare(10, windowY - 100, 40);
     setBackgroundColor(activeColor, rState, gState, bState);
 
-
-    //create array of palette colors
-    nPaletteColors = 5;
-    palette = malloc(sizeof (Form) * nPaletteColors);
-    palette[0] = newSquare(40,10,20);
+    // Create array of palette colors with the first five in one row and the next five below them
+    nPaletteColors = 10;
+    palette = malloc(sizeof(Form) * nPaletteColors);
+    palette[0] = newSquare(60, windowY - 50, 20);
     setBackgroundColor(palette[0], 1.0, 0.0, 0.0); // red
-    palette[1] = newSquare(70,10,20);
+    palette[1] = newSquare(100, windowY - 50, 20);
     setBackgroundColor(palette[1], 0.0, 1.0, 0.0); // green
-    palette[2] = newSquare(100,10,20);
+    palette[2] = newSquare(140, windowY - 50, 20);
     setBackgroundColor(palette[2], 0.0, 0.0, 1.0); // blue
-    palette[3] = newSquare(130,10,20);
+    palette[3] = newSquare(180, windowY - 50, 20);
     setBackgroundColor(palette[3], 1.0, 1.0, 0.0); // yellow
-    palette[4] = newSquare(160,10,20);
+    palette[4] = newSquare(220, windowY - 50, 20);
     setBackgroundColor(palette[4], 1.0, 0.0, 1.0); // magenta
-
-
-
+    palette[5] = newSquare(60, windowY - 80, 20);
+    setBackgroundColor(palette[5], 0.0, 1.0, 1.0); // cyan
+    palette[6] = newSquare(100, windowY - 80, 20);
+    setBackgroundColor(palette[6], 1.0, 0.5, 0.0); // orange
+    palette[7] = newSquare(140, windowY - 80, 20);
+    setBackgroundColor(palette[7], 0.5, 0.0, 0.5); // purple
+    palette[8] = newSquare(180, windowY - 80, 20);
+    setBackgroundColor(palette[8], 0.5, 0.5, 0.5); // gray
+    palette[9] = newSquare(220, windowY - 80, 20);
+    setBackgroundColor(palette[9], 0.0, 0.0, 0.0); // black
 
     glClearColor(0.0, 0.0, 0.0, 1.0);
 
@@ -353,13 +358,19 @@ void init() {
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
     gluOrtho2D(0.0, windowX, 0.0, windowY);
-
 }
 
-void myreshape(int w, int h)
-{
+
+void myreshape(int w, int h) {
     windowX = w;
     windowY = h;
+
+    // Update positions of active color and palette
+    updateFormY(activeColor, windowY -50);
+
+    for (int i = 0; i < nPaletteColors; ++i) {
+        updateFormY(palette[i], windowY - 30);
+    }
 
     glViewport(0, 0, windowX, windowY);
     glMatrixMode(GL_PROJECTION);

@@ -20,15 +20,12 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2f4e117e-ef35-4268-8bd7-21153ca9b6ae" name="Changes" comment="">
+    <list default="true" id="2f4e117e-ef35-4268-8bd7-21153ca9b6ae" name="Changes" comment="Add functionality to draw various forms and handle mouse interactions&#10;&#10;- Implement functions to draw different forms (rectangle, square, triangle, hexagon, circumference)&#10;- Add mouse click handling to create and delete forms&#10;- Implement color palette selection and form color updates&#10;- Add keyboard controls for form type selection and color adjustments&#10;- Initialize and draw forms in the display callback function">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Ficha2/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/Ficha2/cmake-build-debug/.ninja_deps" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Ficha2/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/Ficha2/cmake-build-debug/.ninja_log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Ficha2/cmake-build-debug/Ficha2" beforeDir="false" afterPath="$PROJECT_DIR$/Ficha2/cmake-build-debug/Ficha2" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Ficha2/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/Ficha2/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ficha2/form.c" beforeDir="false" afterPath="$PROJECT_DIR$/Ficha2/form.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ficha2/form.h" beforeDir="false" afterPath="$PROJECT_DIR$/Ficha2/form.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ficha2/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Ficha2/main.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,6 +39,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;nunofernandes2000&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/nunofernandes2000/EngenhariaInformatica2425.git&quot;,
+    &quot;accountId&quot;: &quot;bbdb3e8c-f0df-4e56-ad30-846b529c84b3&quot;
+  }
+}</component>
   <component name="ProjectApplicationVersion">
     <option name="ide" value="CLion" />
     <option name="majorVersion" value="2024" />
@@ -94,7 +103,21 @@
       <workItem from="1731420605707" duration="42000" />
       <workItem from="1731431257227" duration="2615000" />
       <workItem from="1731435527103" duration="6035000" />
+      <workItem from="1731578183572" duration="517000" />
+      <workItem from="1731579260235" duration="1719000" />
+      <workItem from="1731581302381" duration="7000" />
+      <workItem from="1731582529372" duration="331000" />
+      <workItem from="1731605846429" duration="237000" />
     </task>
+    <task id="LOCAL-00001" summary="Add functionality to draw various forms and handle mouse interactions&#10;&#10;- Implement functions to draw different forms (rectangle, square, triangle, hexagon, circumference)&#10;- Add mouse click handling to create and delete forms&#10;- Implement color palette selection and form color updates&#10;- Add keyboard controls for form type selection and color adjustments&#10;- Initialize and draw forms in the display callback function">
+      <option name="closed" value="true" />
+      <created>1731578491107</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1731578491107</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -104,5 +127,10 @@
     <isAutomaticCheckingOnLaunch value="false" />
     <isAutomaticFoundErrors value="true" />
     <isAutomaticReloadCMake value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Readme Updated" />
+    <MESSAGE value="Add functionality to draw various forms and handle mouse interactions&#10;&#10;- Implement functions to draw different forms (rectangle, square, triangle, hexagon, circumference)&#10;- Add mouse click handling to create and delete forms&#10;- Implement color palette selection and form color updates&#10;- Add keyboard controls for form type selection and color adjustments&#10;- Initialize and draw forms in the display callback function" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add functionality to draw various forms and handle mouse interactions&#10;&#10;- Implement functions to draw different forms (rectangle, square, triangle, hexagon, circumference)&#10;- Add mouse click handling to create and delete forms&#10;- Implement color palette selection and form color updates&#10;- Add keyboard controls for form type selection and color adjustments&#10;- Initialize and draw forms in the display callback function" />
   </component>
 </project>

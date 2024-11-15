@@ -85,6 +85,9 @@ Form createFormCLICK(int type,int x, int y, int maxSize);
 void getBGColor(Form f, float *c);
 
 
+void updateFormY(Form f, float y);
+
+
 
 
 #endif

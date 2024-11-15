@@ -212,6 +212,11 @@ void getBGColor(Form f, float *c) {
 }
 
 
+void updateFormY(Form f, float y) {
+    f->y = y;
+}
+
+
 void printfForm(Form f) {
     printf("Graphical Form BBox: (%.2f,%.2f), (%.2f, %.2f), (%.2f, %.2f), (%.2f, %.2f)\t",
            f->x, f->y,
